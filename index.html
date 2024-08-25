@@ -125,6 +125,11 @@
           acceleration: true,
           when: {
             turning: function (page, event, pageObject) {
+              if(audio_main_flag == 0)
+              {
+                audio_main.play();
+                audio_main_flag = 1;
+              }
               audio_flip.play();
               if (pageObject.indexOf(1) > -1) {
                 $('#pageInput').val(1 + '/' + totalNum)
@@ -168,11 +173,7 @@
     }
 
     function next() {
-      if(audio_main_flag == 0)
-      {
-        audio_main.play();
-        audio_main_flag = 1;
-      }
+      
       $(".flipbook").turn('next')
     }
 
